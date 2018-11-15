@@ -1,23 +1,28 @@
+// Evaluation at: https://app.codility.com/demo/results/trainingG8P4EM-6KT/
 function solution(N) {
-    let binaryNumber = N.toString(2);
+    // write your code in JavaScript (Node.js 8.9.4)
+    let binary = '';
+    let divResult = N;
     
-    let isOpen = false;
-    let greaterGap = 0;
     let currentGap = 0;
-    for(let n of binaryNumber) {
-        if (n == '1') {
-            isOpen = !isOpen
-            if(!isOpen) {
-                greaterGap = currentGap > greaterGap ? currentGap : greaterGap;
-                currentGap = 0;
+    let maxGap = 0;
+    let isGapOpen = false;
+    
+    do {
+        const bit = parseInt(divResult % 2);
+        binary = bit + binary;
+        divResult = parseInt(divResult / 2);
+        
+        if(bit == 1) {
+            if(isGapOpen && currentGap > maxGap) {
+                maxGap = currentGap;
             }
-        } else {
+            isGapOpen = true;
+            currentGap = 0;
+        } else if(isGapOpen) {
             currentGap++;
         }
-    }
-    return greaterGap;
-    
-    //let gaps = binaryNumber.split('1').slice(1, -1).sort((a, b) => b - a);
-    //let greaterGap = (gaps[0] || '').length;
-    //return greaterGap;
+        
+    } while(parseInt(divResult) > 0);
+    return maxGap;
 }
