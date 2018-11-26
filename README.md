@@ -8,3 +8,4 @@ Solutions for code lessons from codility.
 - 4. [Lesson 4 - Counting Elements](lesson4/)
 - 5. [Lesson 5 - Prefix Sums](lesson5/)
 - 6. [Lesson 6 - Sorting](lesson6/)
+- 7. [Lesson 7 - Stackes and Queues](lesson7/)
